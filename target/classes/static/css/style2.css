@@ -1,0 +1,217 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url(../images/hatter.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.body{
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}
+
+
+/*  SECTIONS  ============================================================================= */
+
+.section {
+    clear: both;
+    padding: 0px;
+    margin: 0px;
+}
+
+/*  GROUPING  ===================f========================================================== */
+
+
+.group:before,
+.group:after {
+    content:"";
+    display:table;
+}
+.group:after {
+    clear:both;
+}
+.group {
+    zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+/*  GRID COLUMN SETUP   ==================================================================== */
+
+.col {
+    display: block;
+    float:left;
+    margin: 1% 0 1% 1.6%;
+}
+
+.col:first-child { margin-left: 0; } /* all browsers except IE6 and lower */
+
+
+/*  REMOVE MARGINS AS ALL GO FULL WIDTH AT 480 PIXELS */
+
+@media only screen and (max-width: 480px) {
+    .col {
+        margin: 1% 0 1% 0%;
+    }
+}
+
+/*  GRID OF SIX   ============================================================================= */
+
+
+.span_6_of_6 {
+    width: 100%;
+}
+
+.span_5_of_6 {
+    width: 83.06%;
+}
+
+.span_4_of_6 {
+    width: 66.13%;
+}
+
+.span_3_of_6 {
+    width: 49.2%;
+}
+
+.span_2_of_6 {
+    width: 32.26%;
+}
+
+.span_1_of_6 {
+    width: 15.33%;
+}
+
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+
+@media only screen and (max-width: 480px) {
+    .span_6_of_6 {
+        width: 100%;
+    }
+    .span_5_of_6 {
+        width: 100%;
+    }
+    .span_4_of_6 {
+        width: 100%;
+    }
+    .span_3_of_6 {
+        width: 100%;
+    }
+    .span_2_of_6 {
+        width: 100%;
+    }
+    .span_1_of_6 {
+        width: 100%;
+    }
+}
+
+/*nav*/
+#CompHTMLTop {
+    margin: 0 auto;
+    height: 128px;
+    background: url(http://imgsg.jobing.com/company/images/142373/t/shadowborder.png) no-repeat bottom center;
+}
+
+.mainnav .span_4_of_6{
+    text-align:center;
+}
+
+.mainnav .span_1_of_6 a:first-child{
+    text-align: right;
+    display: block;
+    color: #666;
+}
+.mainnav img{
+    vertical-align: middle;
+}
+
+
+.mainnav ul li {
+    display: inline;
+}
+
+.mainnav ul li a {
+    margin: 0 10px;
+    font-family: Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    color: #818991;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+#Page {
+    width: 80%;
+    max-width: 92.3em;
+    clear: both;
+    margin: 0 auto;
+    padding: 2em 0px;
+    position: relative;
+}
+/*overview page*/
+.intro{
+
+    width: 100%;
+    max-height: 575px;
+}
+
+.intro h1{
+    text-align: center;
+    color: white;
+}
+
+.puzzleman img{
+    padding: 22px;
+}
+.mainnav li{
+    list-style: none;
+
+}
+
+.social li{
+    display:inline-block;
+}
+
+.cc .co-logo,
+.cc .co-url,
+#company-profile-main #PTitle{
+    display:none;
+}
+
+.whitebutton{
+    color: white;
+    border: solid white thin;
+    padding: 10px;
+    margin: 10px 40px;
+    border-radius: 10px;
+
+    display: block;
+
+}
+
+
+
+.mainnav .col{
+    height: 64px;
+    line-height: 64px;
+}
+
+/*split*/
+.bluebucket{
+    background: #e7bc0e;
+}
+
+.redbucket{
+    background: #b08f09;
+}
+
+.bluebucket, .redbucket{
+    text-align:center;
+    text-align: center;
+    margin:0;
+    box-shadow: inset -4px 2px 200px -13px rgba(0,0,0,.5);
+    padding:30px 0;
+    min-height:145px;
+}
+

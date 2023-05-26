@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A PASSO alkalmazás használata</title>
+    <link rel="stylesheet" href="css/style_alk_help.css">
+    <style>
+        /* CSS styles for the search input and button */
+        /* Add your custom styles here */
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+<div style="text-align: center;"><h1>A PASSO alkalmazás használata</h1></div>
+<br>
+<div class="page">
+    <div class="card">
+        <div class="container">
+            <div class="menu">
+                <h3>PASSo</h3>
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="content">
+                <div class="text">
+                    <h1>Fedezze fel az  <br>alkalmazást</h1>
+                    <p>Itt talál további információkat <br>az alkalmazás működésével kapcsolatban</p>
+
+                    <div class="input-box">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <input id="searchInput" type="text" name="search" placeholder="Keresőszó..." required>
+                    </div>
+                    <div class="input-box">
+                        <button onclick="search()">Keresés</button>
+                        <button onclick="resetSearch()">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="photoAlkHelp"></div>
+    </div>
+</div>
+
+<div id="manual">
+
+    <div class="pageH1">
+        <div class="cardH1">
+            <div class="container2">
+                <div class="menu">
+                    <h3>PASSo - Belépés</h3>
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="content">
+                    <div class="text">
+                        <h1>Belépés az alkalmazásba</h1>
+                        <p>Ön már sikeresen belépett az alkalmazásba, további teendője nincs.</p>
+                        <img src="images/screenshot1.jpg" height="300">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pageH1">
+        <div class="cardH1">
+            <div class="container2">
+                <div class="menu">
+                    <h3>PASSo - Kilépés</h3>
+                    <i class="fas fa-bars"></i>
+                </div>
+                <br>
+                <div class="content">
+                    <div class="text">
+                        <h1>Kilépés az alkalmazásból</h1>
+                        <p>Kérjük, hogy zárja be a böngésző ablakát.</p>
+                        <p>Amennyiben újra meg kivánja nyitni az alkalmazást, újra be kell lépnie.</p><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    function search() {
+        var searchQuery = document.getElementById('searchInput').value;
+        var content = document.getElementById('manual');
+
+        var regex = new RegExp(searchQuery, 'gi');
+        var matches = content.innerHTML.match(regex);
+
+        if (matches && matches.length > 0) {
+            var highlightedContent = content.innerHTML.replace(regex, '<span class="highlight">$&</span>');
+            content.innerHTML = highlightedContent;
+        } else {
+            alert('Nem találtam a keresőszónak megfelelő tartalmat!');
+        }
+    }
+
+    function resetSearch() {
+        var content = document.getElementById('manual');
+        content.innerHTML = content.innerHTML.replace(/<span class="highlight">(.*?)<\/span>/gi, '$1');
+        document.getElementById('searchInput').value = '';
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Gazdaság áttekintése</title>
+  <link rel="stylesheet" href="css/style3.css">
+</head>
+<body>
+
+<div class="row">
+  <div class="column">
+    <div class="form">
+      <form method="post" action="/login" th:object="${loginRequest}">
+        <h2>A gazdaság áttekintése</h2>
+        <div class="input-box">
+          <i class="fa fa-user" aria-hidden="true"></i>
+        </div>
+        <div class="input-box">
+        </div>
+        <div>
+          <a class="whitebutton" href="/gazdasag_overview">Aktuális teendők</a>
+          <br>
+          <a class="whitebutton" href="/gazdasag_overview">Elvégzett feladatok</a>
+          <br>
+          <a class="whitebutton" href="/gazdasag_overview">Gazdálkodási terv</a>
+          <br>
+          <a class="whitebutton" href="/nyitooldal"><b>Vissza a nyitóoldalra</b></a>
+        </div>
+        <div>
+          <br><br>
+          <h2>Aktuális teendők</h2>
+          <h4>Meggy - Virágzás után - Mospilan</h4>
+          <h4>Meggy - Virágzás után - Amistar</h4>
+          <br><br>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="column">
+
+    <table class="center">
+      <tr>
+        <th>Gazdaság helyszíne:</th>
+        <th>Sárbogárd</th>
+        <th>GPS: 46.826120, 18.638596</th>
+      </tr>
+      <tr>
+      </tr>
+      <tr>
+        <th>Terület neve</th>
+        <th>Kultúra</th>
+        <th>Kultúra állapota</th>
+        <th>Növényvédelmi terv</th>
+      </tr>
+      <tr>
+        <td>Terület1:</td>
+        <td>Gyümölcsfa - Meggy</td>
+        <td>Termő</td>
+        <td>Standard</td>
+      </tr>
+      <tr>
+        <td>Terület2:</td>
+        <td>Gyümölcsfa - Alma</td>
+        <td>Termő</td>
+        <td>Standard</td>
+      </tr>
+      <tr>
+        <td>Terület3:</td>
+        <td>Gyümölcsfa - Körte</td>
+        <td>Termő</td>
+        <td>Bio</td>
+      </tr>
+    </table>
+
+    <img src="../images/map.jpg"></img>
+  </div>
+</div>
+
+
+
+</body>
+</html>
