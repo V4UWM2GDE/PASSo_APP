@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String getRegisterPage(Model model) {
+    public String getRegisterPage(Model model, HttpServletResponse httpServletResponse) {
         model.addAttribute("registerRequest", new UserModel());
         return "register_page";
     }
@@ -34,8 +34,10 @@ public class UserController {
     }
 
     @GetMapping("/login_reset")
-    public String getLoginResetPage(Model model) {
+    public String getLoginResetPage(Model model, HttpServletResponse httpServletResponse) {
         model.addAttribute("tudastarRequest", new UserModel());
+        httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN"); // SERULEKENYSEG JAV
+        httpServletResponse.setHeader("Content-Security-Policy", " frame-ancestors 'self'"); // SERULEKENYSEG JAV2
         return "login_reset";
     }
 
@@ -51,8 +53,10 @@ public class UserController {
     }
 
     @GetMapping("/alk_help")
-    public String getAHPage(Model model) {
+    public String getAHPage(Model model, HttpServletResponse httpServletResponse) {
         model.addAttribute("tudastarRequest", new UserModel());
+        httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN"); // SERULEKENYSEG JAV
+        httpServletResponse.setHeader("Content-Security-Policy", " frame-ancestors 'self'"); // SERULEKENYSEG JAV2
         return "alk_help";
     }
 
@@ -68,8 +72,10 @@ public class UserController {
     }
 
     @GetMapping("/tudastar")
-    public String getkhPage(Model model) {
+    public String getkhPage(Model model, HttpServletResponse httpServletResponse) {
         model.addAttribute("tudastarRequest", new UserModel());
+        httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN"); // SERULEKENYSEG JAV
+        httpServletResponse.setHeader("Content-Security-Policy", " frame-ancestors 'self'"); // SERULEKENYSEG JAV2
         return "kh_page";
     }
 
@@ -85,8 +91,10 @@ public class UserController {
     }
 
     @GetMapping("/tudastar_nvsz")
-    public String getkh_nvszPage(Model model) {
+    public String getkh_nvszPage(Model model, HttpServletResponse httpServletResponse) {
         model.addAttribute("tudastarRequest", new UserModel());
+        httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN"); // SERULEKENYSEG JAV
+        httpServletResponse.setHeader("Content-Security-Policy", " frame-ancestors 'self'"); // SERULEKENYSEG JAV2
         return "tudastar_nvsz";
     }
 
@@ -102,8 +110,10 @@ public class UserController {
     }
 
     @GetMapping("/gazdasag_overview")
-    public String getGazdPage(Model model) {
+    public String getGazdPage(Model model, HttpServletResponse httpServletResponse) {
         model.addAttribute("gazdasagRequest", new UserModel());
+        httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN"); // SERULEKENYSEG JAV
+        httpServletResponse.setHeader("Content-Security-Policy", " frame-ancestors 'self'"); // SERULEKENYSEG JAV2
         return "gazdasag_overview";
     }
 
@@ -119,8 +129,10 @@ public class UserController {
     }
 
     @GetMapping("/nyitooldal")
-    public String getLandingPage(Model model) {
+    public String getLandingPage(Model model, HttpServletResponse httpServletResponse) {
         model.addAttribute("landingRequest", new UserModel());
+        httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN"); // SERULEKENYSEG JAV
+        httpServletResponse.setHeader("Content-Security-Policy", " frame-ancestors 'self'"); // SERULEKENYSEG JAV2
         return "personal_page";
     }
 

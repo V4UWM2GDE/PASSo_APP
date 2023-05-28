@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "felhasznalok")
+@Table(name = "t_users")
 public class UserModel {
 
     @Id
@@ -14,9 +14,69 @@ public class UserModel {
 
     String login;
 
-    String password;
+    String ftipus;
+
+    String fnev;
+
+    String fcim;
 
     String email;
+
+    String gazdtipusa;
+
+    Integer gazdasagid;
+
+    String password;
+
+    Integer froleid;
+
+    public String getFtipus() {
+        return ftipus;
+    }
+
+    public void setFtipus(String ftipus) {
+        this.ftipus = ftipus;
+    }
+
+    public String getFnev() {
+        return fnev;
+    }
+
+    public void setFnev(String fnev) {
+        this.fnev = fnev;
+    }
+
+    public String getFcim() {
+        return fcim;
+    }
+
+    public void setFcim(String fcim) {
+        this.fcim = fcim;
+    }
+
+    public String getGazdtipusa() {
+        return gazdtipusa;
+    }
+
+    public void setGazdtipusa(String gazdtipusa) {
+        this.gazdtipusa = gazdtipusa;
+    }
+
+    public Integer getGazdasagid() {
+        return gazdasagid;
+    }
+
+    public void setGazdasagid(Integer gazdasagid) {
+        this.gazdasagid = gazdasagid;
+    }
+
+    public Integer getFroleid() {
+        return froleid;
+    }
+
+    public void setFroleid(Integer froleid) {
+        this.froleid = froleid;
+    }
 
     public Integer getId() {
         return id;
