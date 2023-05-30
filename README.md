@@ -1,2 +1,2 @@
 # PASSo_APP
-PASSo Application REPO
+Javított PASSo Application REPO
