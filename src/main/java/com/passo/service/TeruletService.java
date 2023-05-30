@@ -1,8 +1,11 @@
 package com.passo.service;
 
 import com.passo.model.TeruletModel;
+import com.passo.model.TudastarModel;
 import com.passo.repository.*;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class TeruletService {
@@ -29,4 +32,7 @@ public class TeruletService {
         }
     }
 
+    public List<TeruletModel> getAllTerulet() {
+        return teruletRepository.findAll();
+    }
 }

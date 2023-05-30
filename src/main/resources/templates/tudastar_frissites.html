@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Új tudástár bejegyzés</title>
+
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Nunito Sans', sans-serif;
+    }
+
+    .page {
+      witdh: 100vh;
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #F1F1F1;
+    }
+
+    .card {
+      width: 960px;
+      height: 340px;
+      background-color: white;
+      box-shadow: 0px 50px 100px rgba(0, 0, 0, .4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      height: 100%;
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .menu {
+      width: 100%;
+      height: 10%;
+    }
+
+    .menu h3 {
+      font-size: 1em;
+      margin-left: 25px;
+      font-weight: 800;
+      float: left;
+    }
+
+    i {
+      float: right;
+      font-size: 0.8em;
+      margin: 20px 25px;
+      transition: font-size 0.2s;
+    }
+
+    i:hover {
+      font-size: 1em;
+    }
+
+    .content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .content .text {
+      margin-bottom: 50px;
+    }
+
+    .text h1 {
+      font-size: 2.5em;
+      line-height: 1;
+    }
+
+    .text p {
+      color: rgb(0,0,0,0.5);
+      margin-bottom: 40px;
+      margin-top: -5px;
+    }
+
+    .text a {
+      font-weight: 600;
+      color: white;
+      text-decoration: none;
+      background-color: #fe864c;
+      transition: background-color 0.2s;
+      transition: color 0.2s;
+      padding: 10px 20px;
+      border: 2px solid #fe864c;
+    }
+
+    .text a:hover, .text a:active {
+      background-color: white;
+      color: #fe864c;
+    }
+  </style>
+</head>
+<body>
+
+<div style="text-align: center;"><h1>Tudástár frissítés</h1></div>
+<div class="text">
+  <a href="/nyitooldal">Vissza a nyitóoldalra</a>
+</div>
+
+<br>
+
+<div class="page">
+  <div class="card">
+    <div class="container">
+      <div class="menu">
+        <h3>Tudástár</h3>
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="content">
+        <div class="text">
+          <h1>Módosítás.</h1>
+          <p>Kérjük frissítse a mezőket!</p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="menu">
+        <h3>Tudástár</h3>
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="content">
+        <div class="text">
+
+          <form class="form-horizontal" method="post" th:action="@{/tudastar_regisztracio}" th:object="${t_tudastar}">
+            <input th:field="*{id}" type="hidden" />
+
+            <div class="form-group mx-3 my-3">
+              <div class="col-sm-12">
+                <select class="form-control" th:field="*{tudastartipus}" id="tudastartipus" required style="width: 400px;">
+                  <option value="">Kérjük válasszon!</option>
+                  <option value="Általános">Általános bejegyzés</option>
+                  <option value="Növényvédő szer">Növényvédő szer</option>
+                  <option value="Növényvédelmi feladat">Növényvédelmi feladat</option>
+                  <option value="Biogazdálkodás">Biogazdálkodás</option>
+                  <option value="Gépek">Gépek</option>
+                  <option value="Munkavédelem">Munkavédelem</option>
+                </select>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="form-group mx-3 my-3">
+              <div class="col-sm-12">
+                <input class="form-control" th:field="*{tudastarcime}" type="text" id="tudastarcime" placeholder="A bejegyzés címe" required style="width: 400px;">
+              </div>
+            </div>
+
+            <br>
+
+            <div class="form-group mx-3 my-3">
+              <div class="col-sm-12">
+                <textarea class="form-control" th:field="*{tudastarreszl}" id="tudastarreszl"
+                          placeholder="Tudástár részletek" required rows="5" style="width: 400px;"></textarea>
+              </div>
+            </div>
+
+            <br>
+
+
+            <div class="form-group mx-3 my-3">
+              <button type="submit" value="Save">Mentés</button>
+            </div>
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>

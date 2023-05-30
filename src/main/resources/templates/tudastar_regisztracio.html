@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Új tudástár bejegyzés</title>
+  <link rel="stylesheet" href="css/style_personal_page.css">
+</head>
+<body>
+
+<div style="text-align: center;"><h1>Új tudástár bejegyzés</h1></div>
+<div class="text">
+  <a href="/nyitooldal">Vissza a nyitóoldalra</a>
+</div>
+
+<br>
+
+<div class="page">
+  <div class="card">
+    <div class="container">
+      <div class="menu">
+        <h3>Tudástár</h3>
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="content">
+        <div class="text">
+          <h1>Új cikk</h1>
+          <p>Kérjük töltse ki a mezőket!</p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="menu">
+        <h3>Tudástár</h3>
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="content">
+        <div class="text">
+
+          <form class="form-horizontal" method="post" th:action="@{/tudastar_regisztracio}" th:object="${t_tudastar}">
+            <input th:field="*{id}" type="hidden" />
+
+            <div class="form-group mx-3 my-3">
+              <div class="col-sm-12">
+                <select class="form-control" th:field="*{tudastartipus}" id="tudastartipus" required style="width: 400px;">
+                  <option value="">Kérjük válasszon!</option>
+                  <option value="Általános">Általános bejegyzés</option>
+                  <option value="Növényvédő szer">Növényvédő szer</option>
+                  <option value="Növényvédelmi feladat">Növényvédelmi feladat</option>
+                  <option value="Biogazdálkodás">Biogazdálkodás</option>
+                  <option value="Gépek">Gépek</option>
+                  <option value="Munkavédelem">Munkavédelem</option>
+                </select>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="form-group mx-3 my-3">
+              <div class="col-sm-12">
+                <input class="form-control" th:field="*{tudastarcime}" type="text" id="tudastarcime" placeholder="A bejegyzés címe" required style="width: 400px;">
+              </div>
+            </div>
+
+            <br>
+
+            <div class="form-group mx-3 my-3">
+              <div class="col-sm-12">
+                <textarea class="form-control" th:field="*{tudastarreszl}" id="tudastarreszl"
+                       placeholder="Tudástár részletek" required rows="5" style="width: 400px;"></textarea>
+              </div>
+            </div>
+
+            <br>
+
+
+            <div class="form-group mx-3 my-3">
+              <button type="submit" value="Save">Mentés</button>
+            </div>
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>

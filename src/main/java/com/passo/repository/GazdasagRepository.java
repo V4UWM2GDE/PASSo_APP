@@ -9,4 +9,5 @@ public interface GazdasagRepository extends JpaRepository<GazdasagModel, Integer
 
     Optional<GazdasagModel> findGazdasagModelByGazdasagneve(String gazdasagneve);
 
+
 }

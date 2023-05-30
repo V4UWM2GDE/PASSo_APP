@@ -71,62 +71,6 @@ public class UserController {
         }
     }
 
-    @GetMapping("/tudastar")
-    public String getkhPage(Model model, HttpServletResponse httpServletResponse) {
-        model.addAttribute("tudastarRequest", new UserModel());
-        httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN"); // SERULEKENYSEG JAV
-        httpServletResponse.setHeader("Content-Security-Policy", " frame-ancestors 'self'"); // SERULEKENYSEG JAV2
-        return "kh_page";
-    }
-
-    @PostMapping("/tudastar")
-    public String tudastar(@ModelAttribute UserModel userModel, Model model){
-        UserModel authenticated = userService.authenticate(userModel.getLogin(), userModel.getPassword());
-        if (authenticated != null) {
-            model.addAttribute("userLogin", authenticated.getLogin());
-            return "kh_page";
-        } else {
-            return "error_page";
-        }
-    }
-
-    @GetMapping("/tudastar_nvsz")
-    public String getkh_nvszPage(Model model, HttpServletResponse httpServletResponse) {
-        model.addAttribute("tudastarRequest", new UserModel());
-        httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN"); // SERULEKENYSEG JAV
-        httpServletResponse.setHeader("Content-Security-Policy", " frame-ancestors 'self'"); // SERULEKENYSEG JAV2
-        return "tudastar_nvsz";
-    }
-
-    @PostMapping("/tudastar_nvsz")
-    public String tudastar_nvsz(@ModelAttribute UserModel userModel, Model model){
-        UserModel authenticated = userService.authenticate(userModel.getLogin(), userModel.getPassword());
-        if (authenticated != null) {
-            model.addAttribute("userLogin", authenticated.getLogin());
-            return "tudastar_nvsz";
-        } else {
-            return "error_page";
-        }
-    }
-
-    @GetMapping("/gazdasag_overview")
-    public String getGazdPage(Model model, HttpServletResponse httpServletResponse) {
-        model.addAttribute("gazdasagRequest", new UserModel());
-        httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN"); // SERULEKENYSEG JAV
-        httpServletResponse.setHeader("Content-Security-Policy", " frame-ancestors 'self'"); // SERULEKENYSEG JAV2
-        return "gazdasag_overview";
-    }
-
-    @PostMapping("/gazdasag_overview")
-    public String gazdasag_overview(@ModelAttribute UserModel userModel, Model model){
-        UserModel authenticated = userService.authenticate(userModel.getLogin(), userModel.getPassword());
-        if (authenticated != null) {
-            model.addAttribute("userLogin", authenticated.getLogin());
-            return "gazdasag_overview";
-        } else {
-            return "error_page";
-        }
-    }
 
     @GetMapping("/nyitooldal")
     public String getLandingPage(Model model, HttpServletResponse httpServletResponse) {
@@ -171,4 +115,45 @@ public class UserController {
         }
 
     }
+
+/*
+    @GetMapping("/gazdasag_overview")
+    public String getGazdPage(Model model, HttpServletResponse httpServletResponse) {
+        model.addAttribute("gazdasagRequest", new UserModel());
+        httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN"); // SERULEKENYSEG JAV
+        httpServletResponse.setHeader("Content-Security-Policy", " frame-ancestors 'self'"); // SERULEKENYSEG JAV2
+        return "gazdasag_overview";
+    }
+
+    @PostMapping("/gazdasag_overview")
+    public String gazdasag_overview(@ModelAttribute UserModel userModel, Model model){
+        UserModel authenticated = userService.authenticate(userModel.getLogin(), userModel.getPassword());
+        if (authenticated != null) {
+            model.addAttribute("userLogin", authenticated.getLogin());
+            return "gazdasag_overview";
+        } else {
+            return "error_page";
+        }
+    }
+*/
+
+    @GetMapping("/adminisztrator")
+    public String getAdminPage(Model model, HttpServletResponse httpServletResponse) {
+        model.addAttribute("landingRequest", new UserModel());
+        httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN"); // SERULEKENYSEG JAV
+        httpServletResponse.setHeader("Content-Security-Policy", " frame-ancestors 'self'"); // SERULEKENYSEG JAV2
+        return "adminisztrator_oldal";
+    }
+
+    @PostMapping("/adminisztrator")
+    public String getAdminPage(@ModelAttribute UserModel userModel, Model model){
+        UserModel authenticated = userService.authenticate(userModel.getLogin(), userModel.getPassword());
+        if (authenticated != null) {
+            model.addAttribute("userLogin", authenticated.getLogin());
+            return "adminisztrator_oldal";
+        } else {
+            return "error_page";
+        }
+    }
+
 }

@@ -17,7 +17,7 @@ public class GazdalkodasRModel {
 
     String feladatok;
 
-    Integer feladatstatus;
+    String feladatstatus;
 
     public Integer getId() {
         return id;
@@ -51,11 +51,11 @@ public class GazdalkodasRModel {
         this.feladatok = feladatok;
     }
 
-    public Integer getFeladatstatus() {
+    public String getFeladatstatus() {
         return feladatstatus;
     }
 
-    public void setFeladatstatus(Integer feladatstatus) {
+    public void setFeladatstatus(String feladatstatus) {
         this.feladatstatus = feladatstatus;
     }
 

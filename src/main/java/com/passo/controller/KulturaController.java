@@ -6,16 +6,20 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class KulturaController {
 
     private final KulturaService kulturaService;
+
+    private final NovenyReszletekService novenyReszletekService;
     private HttpServletResponse httpServletResponse;
 
-    public KulturaController(KulturaService kulturaService) {
+    public KulturaController(KulturaService kulturaService, NovenyReszletekService novenyReszletekService) {
         this.kulturaService = kulturaService;
+        this.novenyReszletekService = novenyReszletekService;
     }
 
     @GetMapping("/kultura_regisztracio")
@@ -35,6 +39,11 @@ public class KulturaController {
     }
 
 
+    @GetMapping("/kultura_novv_reszl/{id}")
+    public String reszletezesek(@PathVariable Integer id, Model model) {
+        novenyReszletekService.findById(id).ifPresent(t_novv_reszl -> model.addAttribute("novvreszl", t_novv_reszl));
+        return "novv_cikk";
+    }
 
 
 }

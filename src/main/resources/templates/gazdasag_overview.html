@@ -1,83 +1,121 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-  <meta charset="UTF-8">
   <title>Gazdaság áttekintése</title>
-  <link rel="stylesheet" href="css/style3.css">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+  <!-- Open Source CDN beagyazasa -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style_tudastar.css">
+
 </head>
+
 <body>
 
-<div class="row">
-  <div class="column">
-    <div class="form">
-      <form method="post" action="/login" th:object="${loginRequest}">
-        <h2>A gazdaság áttekintése</h2>
-        <div class="input-box">
-          <i class="fa fa-user" aria-hidden="true"></i>
-        </div>
-        <div class="input-box">
-        </div>
-        <div>
-          <a class="whitebutton" href="/gazdasag_overview">Aktuális teendők</a>
-          <br>
-          <a class="whitebutton" href="/gazdasag_overview">Elvégzett feladatok</a>
-          <br>
-          <a class="whitebutton" href="/gazdasag_overview">Gazdálkodási terv</a>
-          <br>
-          <a class="whitebutton" href="/nyitooldal"><b>Vissza a nyitóoldalra</b></a>
-        </div>
-        <div>
-          <br><br>
-          <h2>Aktuális teendők</h2>
-          <h4>Meggy - Virágzás után - Mospilan</h4>
-          <h4>Meggy - Virágzás után - Amistar</h4>
-          <br><br>
-        </div>
-      </form>
-    </div>
-  </div>
+<div style="text-align: center;"><h1>Gazdaság áttekintése</h1></div>
+<div class="text">
+  <a href="/nyitooldal">Vissza a nyitóoldalra</a>
+</div>
 
-  <div class="column">
+<br>
 
-    <table class="center">
+<div class="page">
+  <div class="card">
+    <table class="table table-striped text-center" style="width: 100%;">
+      <thead class="bg-dark text-light">
+      <h2>A gazdaság(ok) adata(i):</h2>
       <tr>
-        <th>Gazdaság helyszíne:</th>
-        <th>Sárbogárd</th>
-        <th>GPS: 46.826120, 18.638596</th>
+        <th scope="col" style="text-align:left">Gazdaság neve</th>
+        <th scope="col" style="text-align:left">Gazdaság címe</th>
+        <th scope="col" style="text-align:left">Gazdaság HRSZ</th>
+        <th scope="col" style="text-align:left">Növényv. terv ID</th>
+        <th scope="col" style="text-align:left"> </th>
       </tr>
-      <tr>
+      </thead>
+      <tbody>
+      <tr th:each="s : ${t_gazd}">
+        <td th:text="${s.gazdasagneve}" style="text-align:left"></td>
+        <td th:text="${s.gazdasagcime}" style="text-align:left"></td>
+        <td th:text="${s.gazdasaghrsz}" style="text-align:left"></td>
+        <td th:text="${s.novenyvtervid}" style="text-align:left"></td>
+        <td >
+          <a class="btn btn-sm btn-success" role="button" th:href="${'/gazd_feladatok_reszl/'+s.id}">
+            <span>Feladatok listája</span>
+          </a>
+        </td>
       </tr>
-      <tr>
-        <th>Terület neve</th>
-        <th>Kultúra</th>
-        <th>Kultúra állapota</th>
-        <th>Növényvédelmi terv</th>
-      </tr>
-      <tr>
-        <td>Terület1:</td>
-        <td>Gyümölcsfa - Meggy</td>
-        <td>Termő</td>
-        <td>Standard</td>
-      </tr>
-      <tr>
-        <td>Terület2:</td>
-        <td>Gyümölcsfa - Alma</td>
-        <td>Termő</td>
-        <td>Standard</td>
-      </tr>
-      <tr>
-        <td>Terület3:</td>
-        <td>Gyümölcsfa - Körte</td>
-        <td>Termő</td>
-        <td>Bio</td>
-      </tr>
+      </tbody>
     </table>
 
-    <img src="../images/map.jpg"></img>
+    <br>
+    <br>
+
+    <div class="container">
+
+          <table class="table table-striped text-center" style="width: 100%;">
+            <thead class="bg-dark text-light">
+            <h2>A terület(ek) adata(i):</h2>
+            <tr>
+              <th scope="col" style="text-align:left">Terület neve</th>
+              <th scope="col" style="text-align:left">Terület GIS adatok</th>
+              <th scope="col" style="text-align:left"> </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="t : ${t_terulet}">
+              <td th:text="${t.teruletneve}" style="text-align:left"></td>
+              <td th:text="${t.teruletgis}" style="text-align:left"></td>
+              <td >
+                <!--
+                <a class="btn btn-sm btn-success" role="button" th:href="${'/gazdreszletezes/'+s.id}">
+                  <span>Részletek</span>
+                </a>
+                -->
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+    </div>
+
+    <br>
+    <br>
+
+    <div class="container">
+
+      <table class="table table-striped text-center" style="width: 100%;">
+        <thead class="bg-dark text-light">
+        <h2>A növénykultúra(k) adata(i):</h2>
+        <tr>
+          <th scope="col" style="text-align:left">Növénykultúra neve</th>
+          <!-- <th scope="col" style="text-align:left">Terület ID</th> -->
+          <!-- <th scope="col" style="text-align:left">Növényv. terv részletei ID</th> -->
+          <th scope="col" style="text-align:left"> </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="u : ${t_kultura}">
+          <td th:text="${u.kulturaneve}" style="text-align:left"></td>
+          <!-- <td th:text="${u.teruletid}" style="text-align:left"></td> -->
+          <!-- <td th:text="${u.novenyvtervreszlid}" style="text-align:left"></td> -->
+          <td >
+            <a class="btn btn-sm btn-success" role="button" th:href="${'/kultura_novv_reszl/'+u.novenyvtervreszlid}">
+              <span>Növényvédelmi részletek</span>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
   </div>
 </div>
 
-
-
 </body>
+
 </html>

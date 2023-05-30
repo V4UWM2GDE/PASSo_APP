@@ -1,8 +1,11 @@
 package com.passo.service;
 
 import com.passo.model.KulturaModel;
+import com.passo.model.TeruletModel;
 import com.passo.repository.*;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class KulturaService {
@@ -28,5 +31,7 @@ public class KulturaService {
             return kulturaRepository.save(kulturaModel);
         }
     }
-
+    public List<KulturaModel> getAllKultura() {
+        return kulturaRepository.findAll();
+    }
 }
