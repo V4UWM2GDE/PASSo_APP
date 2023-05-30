@@ -49,7 +49,18 @@
 
             <div class="form-group mx-3 my-3">
               <div class="col-sm-12">
-                <input class="form-control" th:field="*{teruletid}" type="text" id="teruletid" placeholder="Terület ID" required>
+
+                <!--
+                 <input class="form-control" th:field="*{teruletid}" type="text" id="teruletid" placeholder="Terület ID" required>
+                -->
+
+                <select class="form-control" th:field="*{teruletid}" id="teruletid" required style="width: 400px;">
+                  <option value="">Kérjük válasszon területet!</option>
+
+                  <option th:each="allg : ${allterulet}" th:value="${allg.id}" th:text="${allg.teruletneve}">Terület neve</option>
+
+                </select>
+
               </div>
             </div>
 
@@ -57,8 +68,18 @@
 
             <div class="form-group mx-3 my-3">
               <div class="col-sm-12">
-                <input class="form-control" th:field="*{novenyvtervreszlid}" type="text" id="novenyvtervreszlid"
+                <!--
+                  <input class="form-control" th:field="*{novenyvtervreszlid}" type="text" id="novenyvtervreszlid"
                        placeholder="Növv.terv részl. ID" required>
+                -->
+
+                <select class="form-control" th:field="*{novenyvtervreszlid}" id="novenyvtervreszlid" required style="width: 400px;">
+                  <option value="">Kérjük válasszon növ.véd.terv részletet!</option>
+
+                  <option th:each="alln : ${allnovvtervr}" th:value="${alln.id}" th:text="${alln.getReszlbejegyzescime()}">Növ.véd.terv neve</option>
+
+                </select>
+
               </div>
             </div>
 

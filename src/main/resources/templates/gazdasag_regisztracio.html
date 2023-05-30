@@ -66,8 +66,17 @@
 
                         <div class="form-group mx-3 my-3">
                             <div class="col-sm-12">
-                                <input class="form-control" th:field="*{novenyvtervid}" type="number" id="novenyvtervid"
+                                <!--
+                                    <input class="form-control" th:field="*{novenyvtervid}" type="number" id="novenyvtervid"
                                        placeholder="Növv.terv ID" required>
+                                -->
+
+                                <select class="form-control" th:field="*{novenyvtervid}" id="novenyvtervid" required style="width: 400px;">
+                                    <option value="">Kérjük válasszon növényvédelmi tervet!</option>
+
+                                    <option th:each="novvterv : ${novvtervList}" th:value="${novvterv.id}" th:text="${novvterv.bejegyzescime}">Novenyv.Terv</option>
+
+                                </select>
                             </div>
                         </div>
 

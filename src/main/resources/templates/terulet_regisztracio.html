@@ -57,8 +57,16 @@
 
             <div class="form-group mx-3 my-3">
               <div class="col-sm-12">
-                <input class="form-control" th:field="*{gazdasagid}" type="text" id="gazdasagid"
+                <!--
+                      <input class="form-control" th:field="*{gazdasagid}" type="text" id="gazdasagid"
                        placeholder="Gazdaság ID" required>
+                -->
+                <select class="form-control" th:field="*{gazdasagid}" id="gazdasagid" required style="width: 400px;">
+                  <option value="">Kérjük válasszon gazdaságot!</option>
+
+                  <option th:each="allg : ${allgazdasag}" th:value="${allg.id}" th:text="${allg.gazdasagneve}">Gazdaság neve</option>
+
+                </select>
               </div>
             </div>
 

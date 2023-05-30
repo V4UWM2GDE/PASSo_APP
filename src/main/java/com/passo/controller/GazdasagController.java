@@ -35,6 +35,7 @@ public class GazdasagController {
 
     @GetMapping("/gazdasag_regisztracio")
     public String createGazdasag(Model model, HttpServletResponse httpServletResponse) {
+        model.addAttribute("novvtervList", novenyService.getAllNovenyvterv());
         model.addAttribute("t_gazd", new GazdasagModel());
         httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN"); // SERULEKENYSEG JAV
         httpServletResponse.setHeader("Content-Security-Policy", " frame-ancestors 'self'"); // SERULEKENYSEG JAV2

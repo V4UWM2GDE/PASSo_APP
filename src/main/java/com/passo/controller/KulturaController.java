@@ -13,18 +13,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class KulturaController {
 
     private final KulturaService kulturaService;
-
+    private final TeruletService teruletService;
     private final NovenyReszletekService novenyReszletekService;
     private HttpServletResponse httpServletResponse;
 
-    public KulturaController(KulturaService kulturaService, NovenyReszletekService novenyReszletekService) {
+    public KulturaController(KulturaService kulturaService, TeruletService teruletService, NovenyReszletekService novenyReszletekService) {
         this.kulturaService = kulturaService;
+        this.teruletService = teruletService;
         this.novenyReszletekService = novenyReszletekService;
     }
 
     @GetMapping("/kultura_regisztracio")
     public String createKultura(Model model, HttpServletResponse httpServletResponse) {
         model.addAttribute("t_kultura", new KulturaModel());
+        model.addAttribute("allterulet", teruletService.getAllTerulet());
+        model.addAttribute("allnovvtervr", novenyReszletekService.getAllNovenyvtervreszl());
         httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN"); // SERULEKENYSEG JAV
         httpServletResponse.setHeader("Content-Security-Policy", " frame-ancestors 'self'"); // SERULEKENYSEG JAV2
         return "kultura_regisztracio";
