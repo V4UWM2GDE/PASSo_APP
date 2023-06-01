@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Új növényvédelmi terv részlet</title>
+  <link rel="stylesheet" href="css/style_personal_page.css">
+</head>
+<body>
+
+<div style="text-align: center;"><h1>Új növényvédelmi terv részlet</h1></div>
+<div class="text">
+  <a href="/adminisztrator">Vissza az adminisztrátori oldalra</a>
+</div>
+
+<br>
+
+<div class="page">
+  <div class="card">
+    <div class="container">
+      <div class="menu">
+        <h3>Növényv.részlet</h3>
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="content">
+        <div class="text">
+          <h1>Új növényv. részlet</h1>
+          <p>Kérjük töltse ki a mezőket!</p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="menu">
+        <h3>Növényv.részlet</h3>
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="content">
+        <div class="text">
+
+          <form class="form-horizontal" method="post" th:action="@{/novvterv_reszl_regisztracio}" th:object="${t_novv_reszl}">
+            <input th:field="*{id}" type="hidden" />
+
+            <div class="form-group mx-3 my-3">
+              <div class="col-sm-12">
+                <select class="form-control" th:field="*{novenyvtervid}" id="novenyvtervid" required style="width: 400px;">
+                  <option value="">Kérjük válasszon növényvédelmi tervet!</option>
+
+                  <option th:each="novvterv : ${novvtervList}" th:value="${novvterv.id}" th:text="${novvterv.bejegyzescime}">Novenyv.Terv</option>
+
+                </select>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="form-group mx-3 my-3">
+              <div class="col-sm-12">
+                <select class="form-control" th:field="*{reszlbejegyzestipusa}" id="reszlbejegyzestipusa" required style="width: 400px;">
+                  <option value="">Kérjük válasszon bejegyzés típust!</option>
+                  <option value="Általános">Általános bejegyzés</option>
+                  <option value="Mechanikus védekezés">Mechanikus védekezés</option>
+                  <option value="Vegyszeres védekezés">Vegyszeres védekezés</option>
+                  <option value="Biogazdálkodás">Biogazdálkodás</option>
+                </select>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="form-group mx-3 my-3">
+              <div class="col-sm-12">
+                <input class="form-control" th:field="*{reszlbejegyzescime}" type="text" id="reszlbejegyzescime" placeholder="A bejegyzés címe" required style="width: 400px;">
+              </div>
+            </div>
+
+            <br>
+
+            <div class="form-group mx-3 my-3">
+              <div class="col-sm-12">
+                <!-- <input class="form-control" th:field="*{reszlbejegyzesreszl}" type="text" id="reszlbejegyzesreszl"
+                       placeholder="A bejegyzés részletei" required style="width: 400px;"> -->
+
+                <textarea class="form-control" th:field="*{reszlbejegyzesreszl}" id="reszlbejegyzesreszl"
+                          placeholder="A bejegyzés részletei" required rows="5" style="width: 400px;"></textarea>
+              </div>
+            </div>
+
+            <br>
+
+
+            <div class="form-group mx-3 my-3">
+              <button type="submit" value="Save">Mentés</button>
+            </div>
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>

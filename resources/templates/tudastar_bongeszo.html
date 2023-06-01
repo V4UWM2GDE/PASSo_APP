@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Tudástár böngésző</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+    <!-- Open Source CDN beagyazasa -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style_tudastar.css">
+
+    <style>
+        .table .btn,
+        .btn-warning {
+            border-radius: .6em;
+        }
+
+        .btn-warning {
+            width: 8em;
+        }
+    </style>
+</head>
+
+<body>
+
+<div style="text-align: center;"><h1>Tudástár böngésző</h1></div>
+<div class="text">
+    <a href="/nyitooldal">Vissza a nyitóoldalra</a> <a href="/tudastar_regisztracio">Új bejegyzés</a>
+</div>
+
+<br>
+
+<div class="page">
+    <div class="card">
+
+                <table class="table table-striped text-center" style="width: 100%;">
+                    <thead class="bg-dark text-light">
+                    <tr>
+                        <th scope="col" style="text-align:left">Témakör</th>
+                        <th scope="col" style="text-align:left">Cím</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="s : ${t_tudastar}">
+                        <td th:text="${s.tudastartipus}" style="text-align:left"></td>
+                        <td th:text="${s.tudastarcime}" style="text-align:left"></td>
+                        <td >
+                            <a class="btn btn-sm btn-success" role="button" th:href="${'/reszletezes/'+s.id}">
+                                <span>Részletek</span>
+                            </a>
+                            <a class="btn btn-sm btn-warning" role="button" th:href="${'/szerkesztes/'+s.id}">
+                                <span>Szerkesztés</span>
+                            </a>
+                            <a class="btn btn-sm btn-danger" role="button" th:href="${'/torles/'+s.id}">
+                                <span>Törlés</span>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+    </div>
+</div>
+
+
+</body>
+
+</html>

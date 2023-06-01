@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Gazdaság áttekintése</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+  <!-- Open Source CDN beagyazasa -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style_tudastar.css">
+
+</head>
+
+<body>
+
+<div style="text-align: center;"><h1>Gazdaság áttekintése</h1></div>
+<div class="text">
+  <a href="/nyitooldal">Vissza a nyitóoldalra</a>
+</div>
+
+<br>
+
+<div class="page">
+  <div class="card">
+    <table class="table table-striped text-center" style="width: 100%;">
+      <thead class="bg-dark text-light">
+      <h2>A gazdaság(ok) adata(i):</h2>
+      <tr>
+        <th scope="col" style="text-align:left">Gazdaság neve</th>
+        <th scope="col" style="text-align:left">Gazdaság címe</th>
+        <th scope="col" style="text-align:left">Gazdaság HRSZ</th>
+        <th scope="col" style="text-align:left">Növényv. terv ID</th>
+        <th scope="col" style="text-align:left"> </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="s : ${t_gazd}">
+        <td th:text="${s.gazdasagneve}" style="text-align:left"></td>
+        <td th:text="${s.gazdasagcime}" style="text-align:left"></td>
+        <td th:text="${s.gazdasaghrsz}" style="text-align:left"></td>
+        <td th:text="${s.novenyvtervid}" style="text-align:left"></td>
+        <td >
+          <a class="btn btn-sm btn-success" role="button" th:href="${'/gazd_feladatok_reszl/'+s.id}">
+            <span>Feladatok listája</span>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <br>
+
+    <div class="container">
+
+          <table class="table table-striped text-center" style="width: 100%;">
+            <thead class="bg-dark text-light">
+            <h2>A terület(ek) adata(i):</h2>
+            <tr>
+              <th scope="col" style="text-align:left">Terület neve</th>
+              <th scope="col" style="text-align:left">Terület GIS adatok</th>
+              <th scope="col" style="text-align:left"> </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="t : ${t_terulet}">
+              <td th:text="${t.teruletneve}" style="text-align:left"></td>
+              <td th:text="${t.teruletgis}" style="text-align:left"></td>
+              <td >
+                <!--
+                <a class="btn btn-sm btn-success" role="button" th:href="${'/gazdreszletezes/'+s.id}">
+                  <span>Részletek</span>
+                </a>
+                -->
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+    </div>
+
+    <br>
+    <br>
+
+    <div class="container">
+
+      <table class="table table-striped text-center" style="width: 100%;">
+        <thead class="bg-dark text-light">
+        <h2>A növénykultúra(k) adata(i):</h2>
+        <tr>
+          <th scope="col" style="text-align:left">Növénykultúra neve</th>
+          <!-- <th scope="col" style="text-align:left">Terület ID</th> -->
+          <!-- <th scope="col" style="text-align:left">Növényv. terv részletei ID</th> -->
+          <th scope="col" style="text-align:left"> </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="u : ${t_kultura}">
+          <td th:text="${u.kulturaneve}" style="text-align:left"></td>
+          <!-- <td th:text="${u.teruletid}" style="text-align:left"></td> -->
+          <!-- <td th:text="${u.novenyvtervreszlid}" style="text-align:left"></td> -->
+          <td >
+            <a class="btn btn-sm btn-success" role="button" th:href="${'/kultura_novv_reszl/'+u.novenyvtervreszlid}">
+              <span>Növényvédelmi részletek</span>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
+  </div>
+</div>
+
+</body>
+
+</html>

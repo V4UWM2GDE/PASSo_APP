@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Új kultúra regisztrációja</title>
+  <link rel="stylesheet" href="css/style_personal_page.css">
+</head>
+<body>
+
+<div style="text-align: center;"><h1>Új kultúra regisztrációja</h1></div>
+<div class="text">
+  <a href="/nyitooldal">Vissza a nyitóoldalra</a>
+</div>
+
+<br>
+
+<div class="page">
+  <div class="card">
+    <div class="container">
+      <div class="menu">
+        <h3>Kultúra</h3>
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="content">
+        <div class="text">
+          <h1>3. lépés</h1>
+          <p>Regisztrálja a területen belüli kultúrá(ka)t.</p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="menu">
+        <h3>Kultúra</h3>
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="content">
+        <div class="text">
+
+          <form class="form-horizontal" method="post" th:action="@{/kultura_regisztracio}" th:object="${t_kultura}">
+            <input th:field="*{id}" type="hidden" />
+
+            <div class="form-group mx-3 my-3">
+              <div class="col-sm-12">
+                <input class="form-control" th:field="*{kulturaneve}" type="text" id="kulturaneve" placeholder="Kultúra neve" required>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="form-group mx-3 my-3">
+              <div class="col-sm-12">
+
+                <!--
+                 <input class="form-control" th:field="*{teruletid}" type="text" id="teruletid" placeholder="Terület ID" required>
+                -->
+
+                <select class="form-control" th:field="*{teruletid}" id="teruletid" required style="width: 400px;">
+                  <option value="">Kérjük válasszon területet!</option>
+
+                  <option th:each="allg : ${allterulet}" th:value="${allg.id}" th:text="${allg.teruletneve}">Terület neve</option>
+
+                </select>
+
+              </div>
+            </div>
+
+            <br>
+
+            <div class="form-group mx-3 my-3">
+              <div class="col-sm-12">
+                <!--
+                  <input class="form-control" th:field="*{novenyvtervreszlid}" type="text" id="novenyvtervreszlid"
+                       placeholder="Növv.terv részl. ID" required>
+                -->
+
+                <select class="form-control" th:field="*{novenyvtervreszlid}" id="novenyvtervreszlid" required style="width: 400px;">
+                  <option value="">Kérjük válasszon növ.véd.terv részletet!</option>
+
+                  <option th:each="alln : ${allnovvtervr}" th:value="${alln.id}" th:text="${alln.getReszlbejegyzescime()}">Növ.véd.terv neve</option>
+
+                </select>
+
+              </div>
+            </div>
+
+            <br>
+
+
+            <div class="form-group mx-3 my-3">
+              <button type="submit" value="Save">Mentés</button>
+            </div>
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>
