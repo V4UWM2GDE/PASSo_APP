@@ -2,8 +2,11 @@ package com.passo.service;
 
 import com.passo.model.TudastarModel;
 import com.passo.repository.*;
+import jakarta.persistence.Lob;
+import org.hibernate.type.descriptor.jdbc.LongVarcharJdbcType;
 import org.springframework.stereotype.Service;
 
+import java.sql.Clob;
 import java.util.List;
 import java.util.Optional;
 

@@ -25,6 +25,7 @@ public class UserService {
             userModel.setLogin(login);
             userModel.setPassword(password);
             userModel.setEmail(email);
+            userModel.setFroleid(Integer.valueOf("0"));
             return userRepository.save(userModel);
         }
     }

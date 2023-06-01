@@ -1,7 +1,9 @@
 package com.passo.model;
 
 import jakarta.persistence.*;
+import org.hibernate.type.descriptor.jdbc.LongVarcharJdbcType;
 
+import java.sql.Clob;
 import java.util.Objects;
 
 @Entity
@@ -14,7 +16,7 @@ public class TudastarModel {
     String tudastartipus;
 
     String tudastarcime;
-
+    @Column(length = 20000)
     String tudastarreszl;
 
     public Integer getId() {

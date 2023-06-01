@@ -14,7 +14,7 @@ public class NovenyvReszletekModel {
     String reszlbejegyzestipusa;
 
     String reszlbejegyzescime;
-
+    @Column(length = 20000)
     String reszlbejegyzesreszl;
 
     Integer novenyvtervid;

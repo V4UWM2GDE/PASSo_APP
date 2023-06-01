@@ -84,8 +84,8 @@ public class UserController {
     public String nyitooldal(@ModelAttribute UserModel userModel, Model model){
         UserModel authenticated = userService.authenticate(userModel.getLogin(), userModel.getPassword());
         if (authenticated != null) {
-            model.addAttribute("userLogin", authenticated.getLogin());
-            return "personal_page";
+                model.addAttribute("userLogin", authenticated.getLogin());
+                return "personal_page";
         } else {
             return "error_page";
         }
@@ -104,10 +104,19 @@ public class UserController {
         System.out.println("Belépési kérelem: " + userModel);
         UserModel authenticated = userService.authenticate(userModel.getLogin(), userModel.getPassword());
         if (authenticated != null) {
-            model.addAttribute("userLogin", authenticated.getLogin());
-            httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN"); // SERULEKENYSEG JAV
-            httpServletResponse.setHeader("Content-Security-Policy", " frame-ancestors 'self'"); // SERULEKENYSEG JAV2
-            return "personal_page";
+
+            if (authenticated.getFroleid() == 1) {
+                model.addAttribute("userLogin", authenticated.getLogin());
+                httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN"); // SERULEKENYSEG JAV
+                httpServletResponse.setHeader("Content-Security-Policy", " frame-ancestors 'self'"); // SERULEKENYSEG JAV2
+                return "adminisztrator_oldal";
+            } else {
+                model.addAttribute("userLogin", authenticated.getLogin());
+                httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN"); // SERULEKENYSEG JAV
+                httpServletResponse.setHeader("Content-Security-Policy", " frame-ancestors 'self'"); // SERULEKENYSEG JAV2
+                return "personal_page";
+            }
+
         } else {
             httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN"); // SERULEKENYSEG JAV
             httpServletResponse.setHeader("Content-Security-Policy", " frame-ancestors 'self'"); // SERULEKENYSEG JAV2
