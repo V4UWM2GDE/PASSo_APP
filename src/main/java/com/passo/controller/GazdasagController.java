@@ -81,4 +81,32 @@ public class GazdasagController {
         return "feladat_reszletek";
     }
 
+    @GetMapping("/ftervezett/{id}/{idg}")
+    public String ftervezett(@PathVariable Integer id, @PathVariable Integer idg, Model model) {
+        model.addAttribute("gazdid", idg);
+        gazdalkodasService.updateStatusById(id, "Tervezett");
+        return "feladat_statusz_updated";
+    }
+
+    @GetMapping("/fnyitott/{id}/{idg}")
+    public String fnyitott(@PathVariable Integer id, @PathVariable Integer idg, Model model) {
+        model.addAttribute("gazdid", idg);
+        gazdalkodasService.updateStatusById(id, "Nyitott");
+        return "feladat_statusz_updated";
+    }
+
+    @GetMapping("/ffolyamatban/{id}/{idg}")
+    public String ffolyamatban(@PathVariable Integer id, @PathVariable Integer idg, Model model) {
+        model.addAttribute("gazdid", idg);
+        gazdalkodasService.updateStatusById(id, "Folyamatban");
+        return "feladat_statusz_updated";
+    }
+
+    @GetMapping("/felvegzett/{id}/{idg}")
+    public String felvegzett(@PathVariable Integer id, @PathVariable Integer idg, Model model) {
+        model.addAttribute("gazdid", idg);
+        gazdalkodasService.updateStatusById(id, "Elvégezve");
+        return "feladat_statusz_updated";
+    }
+
 }
